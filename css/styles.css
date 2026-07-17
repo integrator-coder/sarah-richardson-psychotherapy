@@ -240,6 +240,26 @@ section.visible {
   box-shadow: 0 6px 20px rgba(85, 107, 53, 0.4);
 }
 
+.hero-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 1rem 0;
+}
+
+.hero-list li {
+  padding: 0.3rem 0 0.3rem 1.4rem;
+  position: relative;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.hero-list li::before {
+  content: '\2014';
+  position: absolute;
+  left: 0;
+  color: var(--color-sage);
+}
+
 .cta-note {
   display: block;
   font-size: 0.95rem;
