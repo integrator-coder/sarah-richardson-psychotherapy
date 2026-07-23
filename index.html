@@ -37,7 +37,7 @@
                     <p class="intro">My name is Sarah Richardson, and as a Registered Psychotherapist (RP), I will be by your side as you explore your lived experiences. I provide a warm, compassionate, and non-judgmental space where you can explore your experiences, better understand yourself, and move toward lasting change.</p>
                     <p class="intro">Whether you're feeling stuck, overwhelmed, disconnected, or simply ready for something different, therapy can help you reconnect with yourself and build a life that feels more manageable and meaningful. I believe that healing starts with feeling understood.</p>
                     <p class="intro">Currently accepting new clients for in-person and virtual therapy — Book a free 20-minute consultation to see if we're a good fit.</p>
-                    <a href="mailto:sarahrichardsonpsychotherapy@gmail.com" class="cta-button">Book a Free 20-Minute Consultation</a>
+                    <a href="#contact" class="cta-button">Book a Free 20-Minute Consultation</a>
                 </div>
                 <div class="hero-right">
                     <div class="hero-image">
@@ -225,7 +225,11 @@
             
             <div class="contact-content">
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formsubmit.co/sarahrichardsonpsychotherapy@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New Consultation Request — Sarah Richardson Psychotherapy">
+                        <input type="hidden" name="_next" value="https://integrator-coder.github.io/sarah-richardson-psychotherapy/#contact">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
                         <div class="form-group">
                             <label for="name">Name *</label>
                             <input type="text" id="name" name="name" required>

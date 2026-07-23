@@ -86,45 +86,67 @@ document.querySelectorAll('.faq-question').forEach(question => {
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    // Create status message element
+    const statusMsg = document.createElement('div');
+    statusMsg.id = 'form-status';
+    statusMsg.style.cssText = 'display:none; padding:1rem; border-radius:6px; margin-top:1rem; font-size:0.95rem; text-align:center;';
+    contactForm.appendChild(statusMsg);
+
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        // Get form data
+
+        const submitBtn = contactForm.querySelector('.submit-button');
+        const originalText = submitBtn.textContent;
+
+        // Disable button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        statusMsg.style.display = 'none';
+
+        // Gather form data
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
-            contactMethod: document.querySelector('input[name="contact-method"]:checked').value,
+            'Preferred Contact': document.querySelector('input[name="contact-method"]:checked').value,
             message: document.getElementById('message').value
         };
-        
-        // Here you would typically send this to a server
-        // For now, we'll just show a success message
-        console.log('Form submitted:', formData);
-        
-        // Show success message
-        alert('Thank you for reaching out! I will get back to you within 24-48 hours.');
-        
-        // Reset form
-        contactForm.reset();
-        
-        // In production, you would integrate with:
-        // - EmailJS
-        // - Formspree
-        // - A custom backend
-        // - Google Forms API
-        // Example with EmailJS:
-        /*
-        emailjs.send('service_id', 'template_id', formData)
-            .then(() => {
-                alert('Thank you for reaching out! I will get back to you within 24-48 hours.');
-                contactForm.reset();
-            })
-            .catch((error) => {
-                alert('Something went wrong. Please try emailing me directly at sarah@example.com');
-                console.error('Error:', error);
+
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/sarahrichardsonpsychotherapy@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
             });
-        */
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                // Success
+                statusMsg.style.display = 'block';
+                statusMsg.style.background = '#e8f5e9';
+                statusMsg.style.color = '#2e7d32';
+                statusMsg.style.border = '1px solid #a5d6a7';
+                statusMsg.textContent = 'Thank you for reaching out! I\'ll get back to you within 24\u201348 hours.';
+                contactForm.reset();
+            } else {
+                throw new Error(result.message || 'Submission failed');
+            }
+        } catch (err) {
+            // Error fallback
+            statusMsg.style.display = 'block';
+            statusMsg.style.background = '#fce4ec';
+            statusMsg.style.color = '#b71c1c';
+            statusMsg.style.border = '1px solid #ef9a9a';
+            statusMsg.textContent = 'Something went wrong. Please email me directly at sarahrichardsonpsychotherapy@gmail.com';
+            console.error('Form error:', err);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
     });
 }
 
