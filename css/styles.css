@@ -219,13 +219,13 @@ section.visible {
 }
 
 .areas-of-focus {
-  background: var(--color-sage);
+  background: var(--color-sand);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
   width: 100%;
   max-width: 400px;
   text-align: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
 }
 
 .areas-label {
@@ -233,7 +233,7 @@ section.visible {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--color-text);
   margin: 0 0 0.75rem 0;
 }
 
@@ -249,8 +249,8 @@ section.visible {
 
 .areas-of-focus ul li {
   font-size: 0.82rem;
-  color: var(--color-white);
-  background: rgba(255,255,255,0.18);
+  color: var(--color-text);
+  background: rgba(255,255,255,0.35);
   border-radius: 20px;
   padding: 0.2rem 0.7rem;
   white-space: nowrap;
