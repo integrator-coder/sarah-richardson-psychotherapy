@@ -262,7 +262,7 @@ section.visible {
   border-radius: 50%;
   box-shadow: 0 10px 40px rgba(0,0,0,0.1);
   object-fit: cover;
-  object-position: left 65%;
+  object-position: left center;
   aspect-ratio: 1;
 }
 
