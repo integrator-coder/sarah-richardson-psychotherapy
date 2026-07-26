@@ -330,7 +330,7 @@ section.visible {
   background-image: url('../images/sarah-couch.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 .about-hero-overlay {

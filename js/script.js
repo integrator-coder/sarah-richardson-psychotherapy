@@ -128,19 +128,8 @@ if (contactForm) {
     });
 }
 
-// Parallax effect for about hero image
-window.addEventListener('scroll', () => {
-    const aboutHero = document.querySelector('.about-hero-image');
-    if (aboutHero) {
-        const scrolled = window.pageYOffset;
-        const aboutOffset = aboutHero.offsetTop;
-        const rate = (scrolled - aboutOffset) * 0.5;
-        
-        if (scrolled > aboutOffset - window.innerHeight && scrolled < aboutOffset + aboutHero.offsetHeight) {
-            aboutHero.style.backgroundPositionY = `${rate}px`;
-        }
-    }
-});
+// Parallax removed — background-attachment: fixed is broken on iOS Safari
+// Using static background-position: center instead
 
 // Add loaded class to body when page is fully loaded
 window.addEventListener('load', () => {
