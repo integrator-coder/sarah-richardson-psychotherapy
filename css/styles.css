@@ -5,14 +5,14 @@
 
 /* CSS Variables */
 :root {
-  --color-cream: #EDE6DC;
-  --color-white: #F5F0E8;
+  --color-cream: #E9E8DC;
+  --color-white: #F5F2E9;
   --color-text: #2C2824;
   --color-sand: #B8A582;
   --color-sand-hover: #A8946F;
-  --color-sage: #8B9B6E;
-  --color-olive: #6D8055;
-  --color-forest: #556B35;
+  --color-sage: #8A9A72;
+  --color-olive: #65774F;
+  --color-forest: #465C35;
   --color-taupe: #D4CFC4;
   --color-shadow: #D8CFC2;
   --font-heading: 'Cormorant Garamond', serif;
@@ -157,11 +157,9 @@ section.visible {
 
 /* Hero Section */
 #home {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
   padding-top: 100px;
-  background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%);
+  padding-bottom: 0;
+  background: var(--color-cream);
   position: relative;
   overflow: hidden;
 }
@@ -179,51 +177,73 @@ section.visible {
   opacity: 0.15;
 }
 
-.hero-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.hero-text h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--color-text);
-}
-
-.hero-text .subtitle {
-  font-size: 1.2rem;
-  color: var(--color-olive);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.hero-text .intro {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: var(--color-text);
-}
-
-.hero-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
 .hero-image {
+  width: 100%;
+  min-height: min(72vh, 720px);
+  background: url('../images/sarah-bench.jpg') left center / cover no-repeat;
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  background: linear-gradient(to top, rgba(31, 43, 26, 0.78), rgba(31, 43, 26, 0.05) 65%);
+  padding: 4rem 0;
+}
+
+.hero-overlay .container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-overlay h1 {
+  color: var(--color-white);
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  max-width: 760px;
+  margin: 0;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.38);
+}
+
+.hero-introduction {
+  max-width: 900px;
+  text-align: center;
+  padding-top: 4.5rem;
+  padding-bottom: 5rem;
+  font-size: 1.08rem;
+}
+
+.hero-introduction .eyebrow {
+  color: var(--color-forest);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.hero-introduction h2 {
+  margin-bottom: 2rem;
+}
+
+.session-format {
+  border-top: 1px solid rgba(70, 92, 53, 0.3);
+  margin: 2rem auto;
+  padding-top: 1.5rem;
+  color: var(--color-forest);
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .areas-of-focus {
-  background: var(--color-sand);
+  background: var(--color-sage);
   border-radius: 12px;
-  padding: 1.25rem 1.5rem;
+  padding: 1.75rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 780px;
+  margin: 0 auto;
   text-align: center;
   box-shadow: 0 4px 16px rgba(0,0,0,0.10);
 }
@@ -241,29 +261,29 @@ section.visible {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.4rem 0.6rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem 1.25rem;
+  text-align: left;
 }
 
 .areas-of-focus ul li {
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   color: var(--color-text);
   background: rgba(255,255,255,0.35);
-  border-radius: 20px;
-  padding: 0.2rem 0.7rem;
-  white-space: nowrap;
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
 }
 
-.hero-image img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 50%;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-  object-fit: cover;
-  object-position: left center;
-  aspect-ratio: 1;
+.areas-of-focus a {
+  display: block;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.areas-of-focus a:hover,
+.areas-of-focus a:focus {
+  color: var(--color-forest);
 }
 
 .cta-button {
@@ -378,6 +398,18 @@ section.visible {
   font-size: 1.1rem;
 }
 
+.therapy-philosophy {
+  margin-top: 4rem;
+  padding: 2.5rem;
+  background: rgba(138, 154, 114, 0.18);
+  border-left: 5px solid var(--color-sage);
+  border-radius: 0 12px 12px 0;
+}
+
+.therapy-philosophy h3 {
+  color: var(--color-forest);
+}
+
 /* Services Section */
 #services {
   background: var(--color-taupe);
@@ -409,6 +441,7 @@ section.visible {
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   transition: var(--transition);
+  scroll-margin-top: 115px;
 }
 
 .service-card:hover {
@@ -782,26 +815,23 @@ footer .copyright {
     display: block;
   }
 
-  .hero-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .hero-text h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-right {
-    order: -1;
-    width: 100%;
-  }
-
   .hero-image {
-    order: 0;
+    min-height: 72vh;
+    background-position: left center;
   }
 
-  .hero-image img {
-    max-width: 300px;
+  .hero-overlay {
+    padding: 2.5rem 0;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2.65rem;
+    max-width: 82%;
+  }
+
+  .hero-introduction {
+    padding-top: 3.5rem;
+    padding-bottom: 4rem;
   }
 
   .areas-of-focus {
@@ -853,8 +883,29 @@ footer .copyright {
     padding: 0 1rem;
   }
 
-  .hero-text h1 {
-    font-size: 2rem;
+  .hero-image {
+    min-height: 68vh;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2.25rem;
+  }
+
+  .areas-of-focus {
+    padding: 1.25rem;
+  }
+
+  .areas-of-focus ul {
+    gap: 0.55rem;
+  }
+
+  .areas-of-focus ul li {
+    font-size: 0.82rem;
+    padding: 0.5rem;
+  }
+
+  .therapy-philosophy {
+    padding: 1.5rem;
   }
 
   .service-card,
