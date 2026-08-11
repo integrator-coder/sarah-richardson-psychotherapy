@@ -6,14 +6,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
+            // Close the mobile menu before scrolling so its expanded height
+            // does not distort the final destination.
+            document.getElementById('nav-menu').classList.remove('active');
+
             const navHeight = document.querySelector('nav').offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
             });
-            // Close mobile menu if open
-            document.getElementById('nav-menu').classList.remove('active');
         }
     });
 });
