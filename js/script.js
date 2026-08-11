@@ -8,7 +8,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) {
             // Close the mobile menu before scrolling so its expanded height
             // does not distort the final destination.
-            document.getElementById('nav-menu').classList.remove('active');
+            closeMobileMenu();
 
             const navHeight = document.querySelector('nav').offsetHeight;
             const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
@@ -25,9 +25,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const mobileToggle = document.querySelector('.mobile-menu-toggle');
 const navMenu = document.getElementById('nav-menu');
 
+function closeMobileMenu() {
+    if (!navMenu || !mobileToggle) return;
+    navMenu.classList.remove('active');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileToggle.setAttribute('aria-label', 'Open navigation menu');
+}
+
 if (mobileToggle) {
     mobileToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
+        const isOpen = navMenu.classList.toggle('active');
+        mobileToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+
+    document.addEventListener('click', (event) => {
+        if (navMenu.classList.contains('active') && !navbar.contains(event.target)) {
+            closeMobileMenu();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 860) closeMobileMenu();
     });
 }
 
@@ -69,6 +88,10 @@ document.querySelectorAll('section').forEach(section => {
 
 // FAQ Accordion
 document.querySelectorAll('.faq-question').forEach(question => {
+    question.setAttribute('tabindex', '0');
+    question.setAttribute('role', 'button');
+    question.setAttribute('aria-expanded', 'false');
+
     question.addEventListener('click', () => {
         const faqItem = question.parentElement;
         const isActive = faqItem.classList.contains('active');
@@ -76,11 +99,20 @@ document.querySelectorAll('.faq-question').forEach(question => {
         // Close all FAQ items
         document.querySelectorAll('.faq-item').forEach(item => {
             item.classList.remove('active');
+            item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
         });
         
         // Open clicked item if it wasn't active
         if (!isActive) {
             faqItem.classList.add('active');
+            question.setAttribute('aria-expanded', 'true');
+        }
+    });
+
+    question.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            question.click();
         }
     });
 });
@@ -92,42 +124,22 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            contactMethod: document.querySelector('input[name="contact-method"]:checked').value,
-            message: document.getElementById('message').value
-        };
-        
-        // Here you would typically send this to a server
-        // For now, we'll just show a success message
-        console.log('Form submitted:', formData);
-        
-        // Show success message
-        alert('Thank you for reaching out! I will get back to you within 24-48 hours.');
-        
-        // Reset form
-        contactForm.reset();
-        
-        // In production, you would integrate with:
-        // - EmailJS
-        // - Formspree
-        // - A custom backend
-        // - Google Forms API
-        // Example with EmailJS:
-        /*
-        emailjs.send('service_id', 'template_id', formData)
-            .then(() => {
-                alert('Thank you for reaching out! I will get back to you within 24-48 hours.');
-                contactForm.reset();
-            })
-            .catch((error) => {
-                alert('Something went wrong. Please try emailing me directly at sarah@example.com');
-                console.error('Error:', error);
-            });
-        */
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const contactMethod = document.querySelector('input[name="contact-method"]:checked').value;
+        const message = document.getElementById('message').value.trim();
+        const subject = `Consultation request from ${name}`;
+        const body = [
+            `Name: ${name}`,
+            `Email: ${email}`,
+            `Phone: ${phone || 'Not provided'}`,
+            `Preferred contact method: ${contactMethod}`,
+            '',
+            message
+        ].join('\n');
+
+        window.location.href = `mailto:sarahrichardsonpsychotherapy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
 }
 
@@ -143,21 +155,4 @@ window.addEventListener('load', () => {
     if (firstSection) {
         firstSection.classList.add('visible');
     }
-});
-
-// Accessibility: Allow keyboard navigation for FAQ
-document.querySelectorAll('.faq-question').forEach(question => {
-    question.setAttribute('tabindex', '0');
-    question.setAttribute('role', 'button');
-    question.setAttribute('aria-expanded', 'false');
-    
-    question.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            question.click();
-            question.setAttribute('aria-expanded', 
-                question.parentElement.classList.contains('active') ? 'true' : 'false'
-            );
-        }
-    });
 });
