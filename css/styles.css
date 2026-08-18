@@ -121,11 +121,12 @@ nav ul a:hover { color: var(--green-2); }
 .hero-introduction .reassurance { margin: 0 0 1.25rem; color: var(--green); font-family: var(--font-accent); font-size: clamp(1.8rem, 3.6vw, 3.2rem); font-weight: 600; line-height: 1.2; }
 
 @media (min-width: 901px) {
-  .hero-split { flex-direction: row; align-items: stretch; min-height: 0; }
-  .hero-photo { width: 46%; height: auto; }
+  .hero-split { flex-direction: row; align-items: stretch; aspect-ratio: 3.3 / 1; max-height: 440px; min-height: 0; }
+  .hero-photo { width: 46%; height: 100%; }
   .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
-  .hero-panel { width: 54%; padding: 3.25rem 0; }
-  .hero-panel h1 { width: min(90%, 560px); margin-inline: auto; }
+  .hero-panel { width: 54%; height: 100%; display: flex; align-items: center; padding: 1.25rem 0; overflow: hidden; }
+  .hero-panel h1 { width: min(90%, 560px); margin-inline: auto; font-size: clamp(1.7rem, 2.4vw, 2.35rem); line-height: 1.18; }
+  .hero-panel h1::after { margin-top: .9rem; font-size: clamp(.9rem, 1.1vw, 1.05rem); }
 }
 
 .cta-button, .submit-button {
