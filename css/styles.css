@@ -81,17 +81,13 @@ nav ul a:hover { color: var(--green-2); }
 /* Hero */
 #home { padding: 76px 0 0; background: var(--cream); }
 #home::before { display: none; }
-.hero-image {
-  min-height: min(75vh, 740px);
-  position: relative;
-  background: var(--green) url('../images/nature-heart-tree.jpg') center 55% / cover no-repeat;
-}
+.hero-split { display: flex; flex-direction: column; }
 .desktop-portrait { display: none; }
-.hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(24, 55, 46, 0) 55%, rgba(24, 55, 46, .55) 100%); }
-.hero-overlay { position: absolute; inset: 0; z-index: 1; display: flex; align-items: flex-end; }
-.hero-overlay .container { width: min(1180px, calc(100% - 3rem)); display: block; }
-.hero-overlay h1 { max-width: 720px; margin: 0 0 2.2rem; padding: 0; color: var(--paper); text-shadow: 0 2px 14px rgba(16, 39, 32, .55); }
-.hero-overlay h1::after {
+.hero-photo { width: 100%; height: min(62vh, 560px); overflow: hidden; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 52%; }
+.hero-panel { display: flex; align-items: center; padding: 3rem 0; background: var(--green); }
+.hero-panel h1 { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; max-width: 900px; color: var(--paper); }
+.hero-panel h1::after {
   content: 'Compassionate, trauma-informed psychotherapy';
   display: block;
   max-width: 600px;
@@ -125,14 +121,11 @@ nav ul a:hover { color: var(--green-2); }
 .hero-introduction .reassurance { margin: 0 0 1.25rem; color: var(--green); font-family: var(--font-accent); font-size: clamp(1.8rem, 3.6vw, 3.2rem); font-weight: 600; line-height: 1.2; }
 
 @media (min-width: 901px) {
-  .hero-image {
-    min-height: min(92vh, 900px);
-    background-position: center 52%;
-    background-size: min(58%, 640px) auto;
-    background-color: var(--green);
-  }
-  .hero-overlay .container { display: flex; justify-content: flex-end; }
-  .hero-overlay h1 { width: min(38%, 420px); }
+  .hero-split { flex-direction: row; min-height: min(82vh, 760px); }
+  .hero-photo { width: 46%; height: auto; }
+  .hero-photo img { object-position: center 50%; }
+  .hero-panel { width: 54%; padding: 4rem 0; }
+  .hero-panel h1 { width: min(90%, 560px); margin-inline: auto; }
 }
 
 .cta-button, .submit-button {
@@ -286,7 +279,7 @@ footer h3 { color: var(--paper); font-family: var(--font-accent); font-size: 2re
 }
 
 @media (max-width: 860px) {
-  .container, .hero-overlay .container, .hero-introduction { width: min(100% - 2rem, 680px); }
+  .container, .hero-panel h1, .hero-introduction { width: min(100% - 2rem, 680px); }
   nav ul {
     display: none;
     position: absolute;
@@ -302,10 +295,8 @@ footer h3 { color: var(--paper); font-family: var(--font-accent); font-size: 2re
   nav ul li, nav ul a { width: 100%; text-align: center; }
   nav ul a { display: block; padding: .75rem; }
   .mobile-menu-toggle { display: block; }
-  .hero-image { min-height: 670px; background-position: center 60%; }
-  .hero-image::after { background: linear-gradient(180deg, rgba(24, 55, 46, 0) 62%, rgba(24, 55, 46, .6) 100%); }
-  .hero-overlay { align-items: flex-end; padding-bottom: 2rem; }
-  .hero-overlay h1 { max-width: 620px; }
+  .hero-photo { height: 56vh; }
+  .hero-panel h1 { max-width: 620px; }
   .hero-introduction { padding: 4rem 0; }
   .about-text { grid-template-columns: 1fr; gap: 1rem; }
   .about-text > h3, .about-text > p, .therapy-philosophy { grid-column: 1; }
@@ -318,9 +309,10 @@ footer h3 { color: var(--paper); font-family: var(--font-accent); font-size: 2re
 
 @media (max-width: 600px) {
   nav .logo { min-height: 38px; padding: .42rem .75rem; font-size: .9rem; }
-  .hero-image { min-height: 620px; background-position: center 62%; }
-  .hero-overlay { align-items: flex-end; padding-bottom: 1.5rem; }
-  .hero-overlay h1 { font-size: 2.35rem; margin-bottom: 0; padding: 0; }
+  .hero-photo { height: 52vh; }
+  .hero-photo img { object-position: center 55%; }
+  .hero-panel { padding: 2.5rem 0; }
+  .hero-panel h1 { font-size: 2.35rem; }
   .areas-of-focus { padding: 1.35rem; }
   .areas-of-focus ul, .session-details ul { grid-template-columns: 1fr; }
   .about-hero-image { min-height: auto; }
