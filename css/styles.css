@@ -126,10 +126,13 @@ nav ul a:hover { color: var(--green-2); }
 
 @media (min-width: 901px) {
   .hero-image {
-    background-position: center 58%;
+    min-height: min(92vh, 900px);
+    background-position: center 52%;
+    background-size: min(58%, 640px) auto;
+    background-color: var(--green);
   }
-  .hero-overlay .container { display: flex; justify-content: flex-start; }
-  .hero-overlay h1 { width: min(58%, 640px); }
+  .hero-overlay .container { display: flex; justify-content: flex-end; }
+  .hero-overlay h1 { width: min(38%, 420px); }
 }
 
 .cta-button, .submit-button {
