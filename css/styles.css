@@ -84,7 +84,7 @@ nav ul a:hover { color: var(--green-2); }
 .hero-image {
   min-height: min(75vh, 740px);
   position: relative;
-  background: var(--green) url('../images/nature-heart-tree.jpg') center 42% / cover no-repeat;
+  background: var(--green) url('../images/nature-heart-tree.jpg') center 55% / cover no-repeat;
 }
 .desktop-portrait { display: none; }
 .hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(24, 55, 46, 0) 55%, rgba(24, 55, 46, .55) 100%); }
@@ -126,7 +126,7 @@ nav ul a:hover { color: var(--green-2); }
 
 @media (min-width: 901px) {
   .hero-image {
-    background-position: 20% 32%;
+    background-position: center 58%;
   }
   .hero-overlay .container { display: flex; justify-content: flex-start; }
   .hero-overlay h1 { width: min(58%, 640px); }
@@ -299,9 +299,9 @@ footer h3 { color: var(--paper); font-family: var(--font-accent); font-size: 2re
   nav ul li, nav ul a { width: 100%; text-align: center; }
   nav ul a { display: block; padding: .75rem; }
   .mobile-menu-toggle { display: block; }
-  .hero-image { min-height: 670px; background-position: 54% center; }
-  .hero-image::after { background: linear-gradient(90deg, rgba(24, 55, 46, .78), rgba(24, 55, 46, .33)); }
-  .hero-overlay { align-items: flex-end; padding-bottom: 3.5rem; }
+  .hero-image { min-height: 670px; background-position: center 60%; }
+  .hero-image::after { background: linear-gradient(180deg, rgba(24, 55, 46, 0) 62%, rgba(24, 55, 46, .6) 100%); }
+  .hero-overlay { align-items: flex-end; padding-bottom: 2rem; }
   .hero-overlay h1 { max-width: 620px; }
   .hero-introduction { padding: 4rem 0; }
   .about-text { grid-template-columns: 1fr; gap: 1rem; }
@@ -315,8 +315,9 @@ footer h3 { color: var(--paper); font-family: var(--font-accent); font-size: 2re
 
 @media (max-width: 600px) {
   nav .logo { min-height: 38px; padding: .42rem .75rem; font-size: .9rem; }
-  .hero-image { min-height: 620px; background-position: 40% 30%; }
-  .hero-overlay h1 { font-size: 2.35rem; margin-bottom: 1.5rem; padding: 1.1rem 1.3rem; }
+  .hero-image { min-height: 620px; background-position: center 62%; }
+  .hero-overlay { align-items: flex-end; padding-bottom: 1.5rem; }
+  .hero-overlay h1 { font-size: 2.35rem; margin-bottom: 0; padding: 0; }
   .areas-of-focus { padding: 1.35rem; }
   .areas-of-focus ul, .session-details ul { grid-template-columns: 1fr; }
   .about-hero-image { min-height: auto; }
