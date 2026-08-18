@@ -121,9 +121,9 @@ nav ul a:hover { color: var(--green-2); }
 .hero-introduction .reassurance { margin: 0 0 1.25rem; color: var(--green); font-family: var(--font-accent); font-size: clamp(1.8rem, 3.6vw, 3.2rem); font-weight: 600; line-height: 1.2; }
 
 @media (min-width: 901px) {
-  .hero-split { flex-direction: row; min-height: min(82vh, 760px); }
+  .hero-split { flex-direction: row; min-height: min(64vh, 560px); }
   .hero-photo { width: 46%; height: auto; }
-  .hero-photo img { object-position: center 50%; }
+  .hero-photo img { object-fit: cover; object-position: center 45%; }
   .hero-panel { width: 54%; padding: 4rem 0; }
   .hero-panel h1 { width: min(90%, 560px); margin-inline: auto; }
 }
