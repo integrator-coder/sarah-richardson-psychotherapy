@@ -154,8 +154,8 @@ nav ul a:hover { color: var(--green-2); }
   overflow: hidden;
   background: var(--green);
 }
-.about-portrait-panel { position: relative; width: 100%; height: min(60vh, 580px); }
-.about-portrait-panel img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.about-portrait-panel { position: relative; width: 100%; background: var(--cream); display: flex; justify-content: center; }
+.about-portrait-panel img { width: auto; height: auto; max-height: min(85vh, 760px); max-width: 100%; object-fit: contain; }
 .about-hero-banner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; padding: 3.25rem 3rem; background: var(--green); }
 .about-banner-inner { max-width: 720px; text-align: center; }
 .about-banner-label { margin: 0 0 .6rem; color: var(--lavender); font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
@@ -316,8 +316,8 @@ footer h3 { color: var(--paper); font-family: var(--font-accent); font-size: 2re
   .areas-of-focus { padding: 1.35rem; }
   .areas-of-focus ul, .session-details ul { grid-template-columns: 1fr; }
   .about-hero-image { min-height: auto; }
-  .about-portrait-panel { position: relative; width: 100%; height: 420px; inset: auto; }
-  .about-portrait-panel img { object-position: center 20%; }
+  .about-portrait-panel { position: relative; width: 100%; inset: auto; }
+  .about-portrait-panel img { max-height: 78vh; }
   .about-hero-banner { position: relative; inset: auto; padding: 2.5rem 1.5rem; }
   .about-banner-inner { text-align: center; }
   .about-hero-banner h2 { font-size: 2.6rem; }
